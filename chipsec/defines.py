@@ -33,6 +33,9 @@
 __version__ = '1.0'
 
 import struct
+import os
+
+import chipsec.file
 
 BIT0 = 0x0001
 BIT1 = 0x0002
@@ -158,6 +161,23 @@ SIZE2FORMAT = {
     8: 'Q'
 }
 
+def pack1(value, size):
+    """Shortcut to pack a single value into a string based on its size."""
+    return struct.pack(SIZE2FORMAT[size], value)
+
+def unpack1(string, size):
+    """Shortcut to unpack a single value from a string based on its size."""
+    return struct.unpack(SIZE2FORMAT[size], string)[0]
+
 class ToolType:
-  TIANO_COMPRESS = 1
-  LZMA_COMPRESS  = 2
+    TIANO_COMPRESS = 1
+    LZMA_COMPRESS  = 2
+
+def get_version():
+    chipsec_folder = os.path.abspath(chipsec.file.get_main_dir())
+    version_file = os.path.join( chipsec_folder , "chipsec", "VERSION" )
+    if os.path.exists( version_file ):
+        with open(version_file, "r") as verFile:
+            version = verFile.read()
+            return version
+ 
