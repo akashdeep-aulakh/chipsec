@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 #CHIPSEC: Platform Security Assessment Framework
 #Copyright (c) 2010-2016, Intel Corporation
 # 
@@ -34,6 +34,7 @@ __version__ = '1.0'
 
 import struct
 import os
+import string
 
 import chipsec.file
 
@@ -181,3 +182,6 @@ def get_version():
             version = verFile.read()
             return version
     return ""
+
+def is_printable(seq):
+    return set(seq).issubset(set(string.printable))
