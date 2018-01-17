@@ -12,9 +12,9 @@
 #
 
 """
-The module checks if system is affected by Speculative Execution Side Channel vulnerabilities.
-Specifically, the module verifies that the system supports hardware mitigations
-for Branch Target Injection a.k.a. Spectre Variant 2 (CVE-2017-5715)
+The module checks if system includes hardware mitigations for Speculative Execution Side Channel.
+Specifically, it verifies that the system supports CPU mitigations for
+Branch Target Injection vulnerability a.k.a. Spectre Variant 2 (CVE-2017-5715)
 
 The module checks if the following hardware mitigations are supported by the CPU
 and enabled by the OS/software:
